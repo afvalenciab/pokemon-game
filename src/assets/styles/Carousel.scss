@@ -1,0 +1,14 @@
+
+.player--carousel {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-auto-flow: column;
+  align-items: center;
+  height: 180px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.player--carousel:hover .player--carousel-item {
+  opacity: .5;
+}

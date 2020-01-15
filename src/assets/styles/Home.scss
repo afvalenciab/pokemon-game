@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+}
+
+.home--container {
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 15px;
+  min-height: 100vh;
+  padding: 10px;
+  background-color: #f8f8fa;
+  box-sizing: border-box;
+  grid-template-areas:
+    'title . player-one  player-one'
+    'player-two player-two . options';
+}
+
+.player--one {
+  grid-area: player-one;
+}
+
+.player--two {
+  grid-area: player-two;
+}

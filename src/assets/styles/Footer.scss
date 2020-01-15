@@ -1,0 +1,68 @@
+.home--options {
+  grid-area: options;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .pokeball {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 3px solid #000;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  button {
+    border: 0;
+    width: 100%;
+    height: 50%;
+    font-size: 18px;
+    font-family: 'Space Mono', monospace;
+    box-sizing: border-box;
+    outline: none;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .button--play {
+    border-bottom: 4px solid #000;
+    background-color: #DD0001;
+    color: #FFF;
+    width: 100%;
+    height: 50%;
+    transition: .2s;
+  }
+
+  .button--play:hover {
+    background-color: rgb(165, 4, 4);
+  }
+  .button--play:active {
+    font-size: 14px;
+  }
+
+  .button--restart {
+    border-top: 4px solid #000;
+    width: 100%;
+    height: 50%;
+    transition: .2s;
+  }
+  .button--restart:hover {
+    background-color: rgba(90,90,90,.2);
+  }
+  .button--restart:active {
+    font-size: 14px;
+  }
+
+  figure {
+    align-self: flex-end;
+    margin: 0;
+    img {
+      vertical-align: top;
+      width: 70px;
+    }
+  }
+}
