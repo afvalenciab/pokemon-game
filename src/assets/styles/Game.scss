@@ -26,7 +26,7 @@
       margin: 0;
       img {
         vertical-align: top;
-        width: 150px;
+        width: 220px;
       }
     }
 
@@ -38,6 +38,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 10px 0;
   
         .life--bar {
           width: 150px;
@@ -58,6 +59,7 @@
       p {
         width: 100%;
         margin: 0;
+        padding: 5px 0;
         
         .span {
           font-weight: bold;
@@ -69,6 +71,7 @@
   button {
     outline: none;
     border: 0;
+    align-self: flex-start;
     font-family: 'Space Mono', monospace;
     background-color: goldenrod;
     width: 300px;

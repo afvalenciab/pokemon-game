@@ -1,14 +1,18 @@
 import React,{ useContext } from 'react';
+import { connect } from 'react-redux';
+import { setPokemonPlayer, setLoadingPokemon } from '../actions';
 import { PlayerContext } from '../context/context';
+import getPokemonData from '../utils/getPokemonData';
 import '../assets/styles/CarouselItem.scss';
 
 const PokemonCard = (props) => {
-  const { name, urlPicture } = props;
+  const { name, urlPicture, setPokemonPlayer, setLoadingPokemon } = props;
   const player = useContext(PlayerContext);
 
-  const handleClickPokemon = () => {
-    
-    console.log(`El ${player} eligio el pokemon ${name}`);
+  const handleClickPokemon = async () => {
+    setLoadingPokemon({ player, value: true});
+    const pokemonData = await getPokemonData(name, player);
+    setPokemonPlayer({pokemonData, player});
   };
 
   return (
@@ -21,4 +25,9 @@ const PokemonCard = (props) => {
   );
 };
 
-export default PokemonCard;
+const mapDispatchToProps = {
+  setPokemonPlayer,
+  setLoadingPokemon,
+};
+
+export default connect(null, mapDispatchToProps)(PokemonCard);

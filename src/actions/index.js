@@ -1,4 +1,5 @@
 
+
 export const gettingPokemons = (payload) => {
   return ({
     type: 'GETTING_POKEMONS',
@@ -29,9 +30,23 @@ export const requestMorePokemons = (url) => {
   };
 };
 
-export const getDataPokemon = (nameOrId) => {
-  return (dispatch) => {
-    const url = 
-    fetch()
-  };
+export const setPokemonPlayer = (payload) => {
+  return({
+    type: 'SET_POKEMON_PLAYER',
+    payload,
+  });
+};
+
+export const updateLifeBarPokemon = (payload) => {
+  return({
+    type: 'UPDATE_LIFEBAR_POKEMON',
+    payload,
+  });
+};
+
+export const setLoadingPokemon = (payload) => {
+  return({
+    type: 'SET_LOADING_POKEMON',
+    payload,
+  });
 };

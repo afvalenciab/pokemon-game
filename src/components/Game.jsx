@@ -1,36 +1,61 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { connect } from 'react-redux';
+import { updateLifeBarPokemon } from '../actions';
+import { PlayerContext } from '../context/context';
 import '../assets/styles/Game.scss';
-import snorlax from '../assets/static/Pokemon_snorlax.svg';
 
-const Game = () => {
+const Game = props => {
+  const { name, picture, lifeBar, moves, updateLifeBarPokemon } = props;
+  const player = useContext(PlayerContext);
+  const lengthMoves = moves.length;
+  const [movesPokemon, setMovesPokemon] = useState({
+    move: moves[Math.floor(Math.random()*(lengthMoves - 0))]
+  });
 
   const style = {
-    background: `linear-gradient(90deg, green ${90}%, #fff 0%)`
+    background: `linear-gradient(90deg, green ${lifeBar}%, #fff 0%)`
+  };
+
+  const handleClickAttack = (event) => {
+    event.preventDefault();
+    updateLifeBarPokemon({
+      lessLife: (movesPokemon.move.power * 2) / 10,
+      player
+    });
+
+    const randomPower = Math.floor(Math.random()*(lengthMoves - 0));
+    setMovesPokemon({
+      move: moves[randomPower]
+    });
   };
 
   return (
     <section className='home--game'>
-      <h2>Snorlax</h2>
+      <h2>{name}</h2>
       <div className='game--item'>
         <figure>
-          <img src={snorlax} alt='Pokemon' />
+          <img src={picture} alt='Pokemon' />
         </figure>
         <div className='info--game'>
           <div className='game--life'>
             <div className='life--bar' style={style}></div>
-            <p>100%</p>
+            <p>{lifeBar}%</p>
           </div>
           <p>
-            <span className='span'>Ataque: </span> Thunder
+            <span className='span'>Ataque: </span> {movesPokemon.move.name}
           </p>
           <p>
-            <span className='span'>power:</span> 120
+            <span className='span'>power:</span> {movesPokemon.move.power}
           </p>
         </div>
       </div>
-      <button>Atacar</button>
+      <button onClick={handleClickAttack}>Atacar</button>
     </section>
   );
 };
 
-export default Game;
+const mapDispatchToProps = {
+  updateLifeBarPokemon,
+};
+
+export default connect(null,mapDispatchToProps)(Game);

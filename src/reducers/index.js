@@ -5,15 +5,16 @@ const initialState = {
   nextUrlPokemonsList: undefined,
   pokemonPlayerOne: undefined,
   pokemonPlayerTwo: undefined,
-  currentPlayer: undefined,
+  loadingPokemonOne: false,
+  loadingPokemonTwo: false,
   loaded: false,
   loading: false,
   error: null,
 };
 
-const reducer = (state =  initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-  
+
     case 'GETTING_POKEMONS': {
       const result = {
         ...state,
@@ -46,6 +47,70 @@ const reducer = (state =  initialState, action) => {
       };
       return result;
     };
+
+    case 'SET_POKEMON_PLAYER': {
+      let result = {};
+
+      if (action.payload.player === 'PlayerOne') {
+        result = {
+          ...state,
+          pokemonPlayerOne: action.payload.pokemonData,
+          loadingPokemonOne: false,
+        };
+      } else {
+        result = {
+          ...state,
+          pokemonPlayerTwo: action.payload.pokemonData,
+          loadingPokemonTwo: false,
+        };
+      }
+      return result;
+    };
+
+    case 'UPDATE_LIFEBAR_POKEMON': {
+      let result = {};
+      let newLifeBar;
+
+      if (action.payload.player === 'PlayerOne') {
+        newLifeBar = state.pokemonPlayerTwo.lifeBar - action.payload.lessLife;
+
+        result = {
+          ...state,
+          pokemonPlayerTwo: {
+            ...state.pokemonPlayerTwo,
+            lifeBar: newLifeBar < 0 ? 0 : newLifeBar,
+          }
+        };
+      } else {
+        newLifeBar = state.pokemonPlayerOne.lifeBar - action.payload.lessLife;
+        result = {
+          ...state,
+          pokemonPlayerOne: {
+            ...state.pokemonPlayerOne,
+            lifeBar: newLifeBar < 0 ? 0 : newLifeBar,
+          }
+        };
+      }
+      return result;
+    };
+
+    case 'SET_LOADING_POKEMON': {
+      let result = {};
+
+      if (action.payload.player === 'PlayerOne') {
+        result = {
+          ...state,
+          loadingPokemonOne: action.payload.value,
+        };
+      } else {
+        result = {
+          ...state,
+          loadingPokemonTwo: action.payload.value,
+        };
+      }
+      return result;
+    };
+
 
     default:
       return state;
