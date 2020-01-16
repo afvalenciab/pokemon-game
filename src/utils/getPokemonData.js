@@ -15,11 +15,11 @@ const getPokemonData = async (nameOrId, player) => {
     pokemon = {
       name: data.name,
       picture: player === 'PlayerOne' ? data.sprites.front_default : data.sprites.back_default,
+      pictureDefault: data.sprites.front_default,
       lifeBar: 100,
       moves: maximumPower
     };
   } catch (error) {
-    console.log(error);
     pokemon = {
       ...pokemon,
       name: 'Error Buscando Pokemon',
@@ -41,7 +41,6 @@ const getMaximumPower = async (moves) => {
         movesArray.push({ name: dataMove.name, power: dataMove.power });
       }
     } catch (error) {
-      console.log(error);
       //Continuar consultado el siguiente movimiento
     }
   }

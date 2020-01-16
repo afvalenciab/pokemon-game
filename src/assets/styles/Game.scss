@@ -24,7 +24,7 @@
 
     figure {
       margin: 0;
-      img {
+      .img--pokemon {
         vertical-align: top;
         width: 220px;
       }
@@ -92,3 +92,73 @@
     transform: scale(.92);
   }
 }
+
+.movePokemon {
+  animation-name: move-pokemon;
+  animation-duration: .6s;
+}
+
+@keyframes move-pokemon {
+  0% {
+    transform: translateX(0);
+  }
+  60% {
+    transform: translateX(30px);
+  }
+  75% {
+    transform: translateX(-30px);
+  }
+  90% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes affectPokemon {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .home--game{
+
+    .game--item {
+
+      figure {
+        .img--pokemon {
+          width: 150px;
+        }
+      }
+  
+      .info--game {
+        .game--life {
+          padding: 10px 0;
+    
+          .life--bar {
+            width: 90px;
+          }
+        }
+      }
+    }
+  
+    button {
+      width: 200px;
+      padding: 7px 10px;
+    }
+  }
+} 

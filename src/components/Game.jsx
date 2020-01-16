@@ -5,11 +5,15 @@ import { PlayerContext } from '../context/context';
 import '../assets/styles/Game.scss';
 
 const Game = props => {
-  const { name, picture, lifeBar, moves, updateLifeBarPokemon } = props;
+  const { name, picture, pictureDefault, lifeBar, moves, updateLifeBarPokemon } = props;
   const player = useContext(PlayerContext);
   const lengthMoves = moves.length;
   const [movesPokemon, setMovesPokemon] = useState({
     move: moves[Math.floor(Math.random()*(lengthMoves - 0))]
+  });
+
+  const [animationImg, setAnimationImg] = useState({
+     className: 'img--pokemon'
   });
 
   const style = {
@@ -18,15 +22,26 @@ const Game = props => {
 
   const handleClickAttack = (event) => {
     event.preventDefault();
-    updateLifeBarPokemon({
-      lessLife: (movesPokemon.move.power * 2) / 10,
-      player
+
+    setAnimationImg({
+      className: 'img--pokemon movePokemon'
     });
 
-    const randomPower = Math.floor(Math.random()*(lengthMoves - 0));
-    setMovesPokemon({
-      move: moves[randomPower]
-    });
+    setTimeout(() => {
+      updateLifeBarPokemon({
+        lessLife: (movesPokemon.move.power * 2) / 10,
+        player
+      });
+  
+      const randomPower = Math.floor(Math.random()*(lengthMoves - 0));
+      setMovesPokemon({
+        move: moves[randomPower]
+      });
+      
+      setAnimationImg({
+        className: 'img--pokemon'
+      });
+    }, 1000);
   };
 
   return (
@@ -34,7 +49,7 @@ const Game = props => {
       <h2>{name}</h2>
       <div className='game--item'>
         <figure>
-          <img src={picture} alt='Pokemon' />
+          <img key={lifeBar} className={animationImg.className} src={picture ? picture : pictureDefault} alt='Pokemon' />
         </figure>
         <div className='info--game'>
           <div className='game--life'>

@@ -7,6 +7,7 @@ const initialState = {
   pokemonPlayerTwo: undefined,
   loadingPokemonOne: false,
   loadingPokemonTwo: false,
+  currentPlayer: undefined,
   loaded: false,
   loading: false,
   error: null,
@@ -56,12 +57,14 @@ const reducer = (state = initialState, action) => {
           ...state,
           pokemonPlayerOne: action.payload.pokemonData,
           loadingPokemonOne: false,
+          currentPlayer: 'PlayerTwo'
         };
       } else {
         result = {
           ...state,
           pokemonPlayerTwo: action.payload.pokemonData,
           loadingPokemonTwo: false,
+          currentPlayer: 'PlayerOne'
         };
       }
       return result;
@@ -76,6 +79,7 @@ const reducer = (state = initialState, action) => {
 
         result = {
           ...state,
+          currentPlayer: 'PlayerTwo',
           pokemonPlayerTwo: {
             ...state.pokemonPlayerTwo,
             lifeBar: newLifeBar < 0 ? 0 : newLifeBar,
@@ -85,6 +89,7 @@ const reducer = (state = initialState, action) => {
         newLifeBar = state.pokemonPlayerOne.lifeBar - action.payload.lessLife;
         result = {
           ...state,
+          currentPlayer: 'PlayerOne',
           pokemonPlayerOne: {
             ...state.pokemonPlayerOne,
             lifeBar: newLifeBar < 0 ? 0 : newLifeBar,
@@ -107,6 +112,40 @@ const reducer = (state = initialState, action) => {
           ...state,
           loadingPokemonTwo: action.payload.value,
         };
+      }
+      return result;
+    };
+
+    case 'SET_STATUS_GAME': {
+      let result = {};
+
+      switch (action.payload) {
+        case 'stop': {
+          result = {
+            ...state,
+            statusGame: 'stop',
+            pokemonPlayerOne: undefined,
+            pokemonPlayerTwo: undefined,
+            loadingPokemonOne: false,
+            loadingPokemonTwo: false,
+            loaded: false,
+            loading: false,
+            error: null,
+          };
+          break;
+        };
+
+        case 'game': {
+          result = {
+            ...state,
+            statusGame: 'game',
+            currentPlayer: 'PlayerOne',
+          };
+          break;
+        }
+
+        default: 
+          result = {...state};
       }
       return result;
     };

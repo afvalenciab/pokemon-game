@@ -1,13 +1,15 @@
 import React from 'react';
-import '../assets/styles/Footer.scss';
 import snorlax from '../assets/static/Pokemon_snorlax.svg';
+import '../assets/styles/Footer.scss';
 
-const Footer = () => {
+const Footer = (props) => {
+  const { hanldeClickRestart, statusGame, handleClickPlay } = props;
+  
   return (
-    <footer className='home--options'>
+    <footer className={`home--options ${statusGame==='stop' ? 'is-active': ''}`}>
       <div className='pokeball'>
-        <button className='button--play'>Jugar</button>
-        <button className='button--restart'>Reiniciar</button>
+        <button className='button--play' onClick={handleClickPlay} >Jugar</button>
+        <button className='button--restart' onClick={hanldeClickRestart} >Reiniciar</button>
       </div>
       <figure>
         <img src={snorlax} alt='pokemon snorlax' />

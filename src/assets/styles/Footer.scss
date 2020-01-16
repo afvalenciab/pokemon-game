@@ -66,3 +66,35 @@
     }
   }
 }
+
+.home--options.is-active {
+  position: relative;
+  z-index: 2;
+}
+
+@media screen and (max-width: 650px) {
+  .home--options {
+    .pokeball {
+      width: 100px;
+      height: 100px;
+    }
+  
+    button {
+      font-size: 14px;
+    }
+  
+    .button--play:active {
+      font-size: 10px;
+    }
+  
+    .button--restart:active {
+      font-size: 10px;
+    }
+  
+    figure {
+      img {
+        width: 50px;
+      }
+    }
+  }
+}

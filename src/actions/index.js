@@ -50,3 +50,10 @@ export const setLoadingPokemon = (payload) => {
     payload,
   });
 };
+
+export const setStatusGame = (payload) => {
+  return ({
+    type: 'SET_STATUS_GAME',
+    payload,
+  });
+};

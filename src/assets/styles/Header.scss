@@ -9,3 +9,13 @@
     }
   }
 }
+
+@media screen and (max-width: 650px) {
+  .home--title {
+    figure{
+      img {
+        width: 150px;
+      }
+    }
+  }
+}
