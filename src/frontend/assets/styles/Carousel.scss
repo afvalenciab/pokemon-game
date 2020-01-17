@@ -7,6 +7,12 @@
   height: 180px;
   width: 100%;
   overflow-x: auto;
+
+  .observer {
+    display:block;
+    width: 300px;
+    height: 150px;
+  }
 }
 
 .player--carousel:hover .player--carousel-item {

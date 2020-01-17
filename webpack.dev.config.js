@@ -1,17 +1,12 @@
 const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const autoprefixer = require('autoprefixer');
-const webpack = require('webpack');
-const dotenv = require('dotenv');
-
-dotenv.config();
 
 module.exports = {
   entry: './src/frontend/index.js',
-  mode: process.env.NODE_ENV,
   output: {
-    path: '/',
-    filename: 'assets/app.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
     publicPath: '/',
   },
   resolve: {
@@ -40,14 +35,13 @@ module.exports = {
           },
           'css-loader',
           'sass-loader',
-          'postcss-loader',
         ],
       },
       {
         test: /\.(woff|eot|ttf|svg)$/,
         loader: 'url-loader',
         options: {
-          name: 'assets/static/[hash].[ext]',
+          name: 'assets/fonts/[name].[ext]',
           limit: 1000,
         },
       },
@@ -57,16 +51,12 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: [
-          autoprefixer(),
-        ],
-      },
+    new HtmlWebPackPlugin({
+      template: './public/index.html',
+      filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/app.css',
+      filename: 'assets/[name].css',
     }),
   ],
 };

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { InView } from 'react-intersection-observer';
 import { requestMorePokemons, getPokemonsError } from '../actions';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
@@ -16,34 +17,6 @@ const Player = props => {
   } = props;
 
   const loaderUrl = useRef(nextUrlPokemonsList);
-  const [element, setElement] = useState(null);
-
-  const observer = useRef(
-    new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting) {
-          requestMorePokemons(loaderUrl.current);
-        }
-      },
-      { rootMargin: '0px 500px 0px 0px' }
-    )
-  );
-
-  useEffect(() => {
-    const currentElement = element;
-    const currentObserver = observer.current;
-
-    if (currentElement) {
-      currentObserver.observe(currentElement);
-    }
-
-    return () => {
-      if (currentElement) {
-        currentObserver.unobserve(currentElement);
-      }
-    };
-  }, [element]);
-
   useEffect(() => {
     loaderUrl.current = nextUrlPokemonsList;
   }, [nextUrlPokemonsList]);
@@ -105,6 +78,12 @@ const Player = props => {
     }
   };
 
+  const hanldeChangeInView = (inView, entry) => {
+    if(inView){
+      requestMorePokemons(loaderUrl.current);
+    }
+  };
+
   return (
     <section className='home--player'>
       <h2>Selecciona un Pokémon</h2>
@@ -116,7 +95,9 @@ const Player = props => {
             ))}
 
           {!searchPokemon.isSearching && (
-            <div className='observer' ref={setElement}></div>
+            <InView onChange={hanldeChangeInView}>
+              <div className='observer'></div>
+            </InView>  
           )}
 
           {searchPokemon.isSearching &&

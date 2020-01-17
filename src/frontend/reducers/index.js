@@ -123,6 +123,7 @@ const reducer = (state = initialState, action) => {
         case 'stop': {
           result = {
             ...state,
+            currentPlayer: undefined,
             statusGame: 'stop',
             pokemonPlayerOne: undefined,
             pokemonPlayerTwo: undefined,
