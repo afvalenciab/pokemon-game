@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack-cli --config webpack.config.js --colors",
     "build:dev": "webpack --config ./webpack.dev.config.js --mode development",
     "start:dev": "webpack-dev-server --open --mode development",
     "start-back:dev": "nodemon src/server/index.js --exact babel-node",
+    "start-back:prod": "node src/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

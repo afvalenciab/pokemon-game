@@ -1,5 +1,5 @@
 
-const render = (html) => {
+const render = (html, preloadedState) => {
   return (`
     <!DOCTYPE html>
     <html lang="en">
@@ -13,6 +13,11 @@ const render = (html) => {
     <body>
       <div id='home'>${html}</div>
       <div id="modal-container"></div>
+      <script>
+        // WARNING: See the following for security issues around embedding JSON in HTML:
+        // https://redux.js.org/recipes/server-rendering/#security-considerations
+        window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+      </script>
       <script type="text/javascript" src="assets/app.js"></script>
     </body>
     </html>

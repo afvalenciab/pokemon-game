@@ -10,8 +10,7 @@ const ENV = process.env.NODE_ENV;
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-app.use(helmet());
-app.use(helmet.permittedCrossDomainPolicies());
+app.use(express.static(`${__dirname}/public`));
 
 if (ENV === 'development') {
   console.log(`Loading ${ENV} config`);
@@ -29,6 +28,11 @@ if (ENV === 'development') {
   };
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(webpackHotMiddleware(compiler));
+} else {
+  console.log(`Loading ${ENV} config`);
+  app.use(helmet());
+  app.use(helmet.permittedCrossDomainPolicies());
+  app.disable('x-powered-by');
 }
 
 app.get('*', main);

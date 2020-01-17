@@ -78,3 +78,5 @@ dist/
 # Firebase
 firebaseEnv.js
 .firebase
+
+src/server/public

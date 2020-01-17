@@ -5,12 +5,13 @@ const webpack = require('webpack');
 const dotenv = require('dotenv');
 
 dotenv.config();
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: './src/frontend/index.js',
   mode: process.env.NODE_ENV,
   output: {
-    path: '/',
+    path: isProd ? path.join(process.cwd(), './src/server/public') : '/',
     filename: 'assets/app.js',
     publicPath: '/',
   },
