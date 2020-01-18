@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 import { gettingPokemons, setPokemonsList, getPokemonsError } from '../actions';
 import Home from '../containers/Home';
 import NotFound from '../containers/NotFound';
@@ -10,9 +11,8 @@ const App = (props) => {
     props.gettingPokemons();
     try {
       const fetchData = async () => {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon');
-        const data = await response.json();
-        props.setPokemonsList(data);
+        const res = await axios.get('/pokemon');
+        props.setPokemonsList(res.data);
       };
   
       fetchData();

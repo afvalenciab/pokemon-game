@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
 import helmet from 'helmet';
+import axios from 'axios';
 import main from './routes/main';
 
 dotenv.config();
@@ -10,6 +11,7 @@ const ENV = process.env.NODE_ENV;
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
 if (ENV === 'development') {
@@ -34,6 +36,29 @@ if (ENV === 'development') {
   app.use(helmet.permittedCrossDomainPolicies());
   app.disable('x-powered-by');
 }
+
+app.get('/pokemon', async (req, res, next) => {
+  console.log('Request Pokemon');
+
+  try {
+    const response = await axios.get('https://pokeapi.co/api/v2/pokemon');
+    res.status(200).json(response.data);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get('/pokemon/:nameOrId', async (req, res, next) => {
+  console.log('Request Pokemon by Name or Id');
+  const { nameOrId } = req.params;
+
+  try {
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${nameOrId}`);
+    res.status(200).json(response.data);
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.get('*', main);
 

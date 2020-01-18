@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { InView } from 'react-intersection-observer';
+import axios from 'axios';
 import { requestMorePokemons, getPokemonsError } from '../actions';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
@@ -48,14 +49,12 @@ const Player = props => {
       const fetchData = async () => {
         try {
           const nameOrIdPokemon = searchPokemon.nameOrId.toLowerCase();
-          const response = await fetch(
-            `https://pokeapi.co/api/v2/pokemon/${nameOrIdPokemon}`
-          );
-          const data = await response.json();
+          const response = await axios.get(`/pokemon/${nameOrIdPokemon}`);
+
           setSearchPokemon({
             ...searchPokemon,
             isSearching: true,
-            pokemonSearched: data
+            pokemonSearched: response.data,
           });
         } catch (error) {
           getPokemonsError(error);

@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 const getPokemonData = async (nameOrId, player) => {
   let pokemon = {
@@ -8,14 +9,13 @@ const getPokemonData = async (nameOrId, player) => {
   };
 
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nameOrId}`);
-    const data = await response.json();
-    const maximumPower = await getMaximumPower(data.moves);
+    const response = await axios.get(`/pokemon/${nameOrId}`);
+    const maximumPower = await getMaximumPower(response.data.moves);
 
     pokemon = {
-      name: data.name,
-      picture: player === 'PlayerOne' ? data.sprites.front_default : data.sprites.back_default,
-      pictureDefault: data.sprites.front_default,
+      name: response.data.name,
+      picture: player === 'PlayerOne' ? response.data.sprites.front_default : response.data.sprites.back_default,
+      pictureDefault: response.data.sprites.front_default,
       lifeBar: 100,
       moves: maximumPower
     };
