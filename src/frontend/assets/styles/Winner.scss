@@ -1,0 +1,77 @@
+.overlay__winner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .8);
+  overflow-x: hidden;
+}
+
+.winner__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: auto;
+  background: #fff;
+  padding: 30px;
+  margin: auto;
+  animation-name: winner;
+  animation-duration: 1s;
+
+  h1 {
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: rgb(185, 151, 24);
+  }
+
+  figure {
+    margin: 0;
+    img {
+      vertical-align: top;
+      width: 220px;
+      height: 220px;
+    }
+  }
+
+  p {
+    font-size: 25px;
+    letter-spacing: 1.5px;
+    margin: 0;
+  }
+
+  button {
+    outline: none;
+    background: #3C5BA6;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: bold;
+    border: 0;
+    padding: 10px 30px;
+    border-radius: 7px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: inset 0 -4px rgba(0,0,0, .4);
+    will-change: transform;
+  }
+
+  button:active {
+    transform: scale(.9);
+  }
+}
+
+@keyframes winner {
+  0% {
+    opacity: 0;
+    transform: scale(.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+};
