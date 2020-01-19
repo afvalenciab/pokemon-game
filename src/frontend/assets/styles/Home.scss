@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,700&display=swap');
+
+%disable-style {
+  background: rgba(0,0,0,.4);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  display: none;
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+}
+
+.home--container {
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 15px;
+  min-height: 100vh;
+  padding: 10px;
+  background-color: #f8f8fa;
+  box-sizing: border-box;
+  grid-template-areas:
+    'title . player-one  player-one'
+    'player-two player-two . options';
+}
+
+.player--one {
+  grid-area: player-one;
+  position: relative;
+
+  .overlay__one {
+    @extend %disable-style;
+  }
+
+  .overlay__one.is-disable {
+    display: block;
+  }
+}
+
+.player--two {
+  grid-area: player-two;
+  position: relative;
+
+  .overlay__two {
+    @extend %disable-style;
+  }
+
+  .overlay__two.is-disable {
+    display: block;
+  }
+}
+
+.overlay__home {
+  background: rgba(0,0,0,.4);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: none;
+}
+.overlay__home.is-active {
+  display: block;
+  z-index: 1;
+}
+
+@media screen and (max-width: 650px) {
+  .home--container {
+    grid-template: repeat(4, auto) / 1fr 1fr;
+    min-height: 100vh;
+    grid-template-areas:
+      'title options'
+      'player-one player-one'
+      'player-two player-two';
+  }
+}
