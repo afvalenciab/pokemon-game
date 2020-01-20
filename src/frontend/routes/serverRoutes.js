@@ -4,7 +4,7 @@ import NotFound from '../containers/NotFound';
 const serverRoutes = () => {
   return [
     {
-      path: '/',
+      path: '/:lang?',
       component: Home,
       exact: true,
     },
