@@ -11,9 +11,7 @@ exports[`Winner testing Match Snapshot 1`] = `
       GANADOR
     </h1>
     <figure>
-      <img
-        alt=""
-      />
+      <img />
     </figure>
     <p />
     <button>
