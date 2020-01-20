@@ -2,7 +2,8 @@
 Pokémon-Game is an application to live the experience of a Pokémon battle.
 
 Check the application in the link below:
-[pokemon-game-afvalenciab.herokuapp.com/](https://pokemon-game-afvalenciab.herokuapp.com/)
+* English: [pokemon-game-afvalenciab.herokuapp.com/en](https://pokemon-game-afvalenciab.herokuapp.com/en)
+* Spanish: [pokemon-game-afvalenciab.herokuapp.com/es](https://pokemon-game-afvalenciab.herokuapp.com/es)
 
 ### Start and Choose
 ![Pokémon Game](https://pokemongame.s3-us-west-1.amazonaws.com/PokemonImg1.png)

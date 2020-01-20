@@ -12,6 +12,7 @@ import Winner from '../components/Winner';
 import '../assets/styles/Home.scss';
 
 const Home = props => {
+  const { lang } = props.match ? props.match.params : '';
   const {
     pokemonPlayerOne,
     pokemonPlayerTwo,
@@ -19,7 +20,7 @@ const Home = props => {
     loadingPokemonTwo,
     setStatusGame,
     statusGame,
-    currentPlayer,
+    currentPlayer
   } = props;
 
   const [winner, setWinner] = useState({
@@ -63,34 +64,34 @@ const Home = props => {
         <Header />
         <section className='player--one'>
           <PlayerContext.Provider value='PlayerOne'>
-            {!pokemonPlayerOne && !loadingPokemonOne && <Player />}
+            {!pokemonPlayerOne && !loadingPokemonOne && <Player lang={lang} />}
 
             {!pokemonPlayerOne && loadingPokemonOne && <LoadingPokemon />}
 
             {pokemonPlayerOne && !loadingPokemonOne && (
-              <Game {...pokemonPlayerOne} />
+              <Game {...pokemonPlayerOne} lang={lang} />
             )}
           </PlayerContext.Provider>
           <div className={`overlay__one ${currentPlayer === 'PlayerOne' ? '' :'is-disable' }`}></div>
         </section>
         <section className='player--two'>
           <PlayerContext.Provider value='PlayerTwo'>
-            {!pokemonPlayerTwo && !loadingPokemonTwo && <Player />}
+            {!pokemonPlayerTwo && !loadingPokemonTwo && <Player lang={lang} />}
 
             {!pokemonPlayerTwo && loadingPokemonTwo && <LoadingPokemon />}
 
             {pokemonPlayerTwo && !loadingPokemonTwo && (
-              <Game {...pokemonPlayerTwo} />
+              <Game {...pokemonPlayerTwo} lang={lang} />
             )}
           </PlayerContext.Provider>
           <div className={`overlay__two ${currentPlayer === 'PlayerTwo' ? '' : 'is-disable'}`}></div>
         </section>
-        <Footer hanldeClickRestart={handleRestartGame} handleClickPlay={handlePlayGame} statusGame={statusGame}/>
+        <Footer hanldeClickRestart={handleRestartGame} handleClickPlay={handlePlayGame} statusGame={statusGame} lang={lang}/>
       </main>
       <div className={`overlay__home ${statusGame === 'stop' ? 'is-active':''}`}></div>
       {Object.keys(winner.pokemon).length > 0 && (
         <Modal>
-          <Winner {...winner.pokemon} hanldeClickRestart={handleRestartGame} />
+          <Winner {...winner.pokemon} hanldeClickRestart={handleRestartGame} lang={lang} />
         </Modal>
       )}
     </>
@@ -109,7 +110,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  setStatusGame,
+  setStatusGame
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

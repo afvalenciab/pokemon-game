@@ -1,13 +1,22 @@
 import React, { useState, useContext } from 'react';
 import { connect } from 'react-redux';
+import counterpart from 'counterpart';
+import Translate from 'react-translate-component';
 import { updateLifeBarPokemon } from '../actions';
 import { PlayerContext } from '../context/context';
 import '../assets/styles/Game.scss';
+import en from '../lang/en';
+import es from '../lang/es';
+
+counterpart.registerTranslations('en', en);
+counterpart.registerTranslations('es', es);
 
 const Game = props => {
-  const { name, picture, pictureDefault, lifeBar, moves, updateLifeBarPokemon } = props;
+  const { name, picture, pictureDefault, lifeBar, moves, updateLifeBarPokemon, lang } = props;
   const player = useContext(PlayerContext);
   const lengthMoves = moves ? moves.length : 0;
+  counterpart.setLocale(lang ? lang : 'es');
+
   const [movesPokemon, setMovesPokemon] = useState({
     move: moves ? moves[Math.floor(Math.random()*(lengthMoves))] : 0
   });
@@ -57,14 +66,14 @@ const Game = props => {
             <p>{lifeBar}%</p>
           </div>
           <p>
-            <span className='span'>Ataque: </span> {movesPokemon.move.name}
+            <span className='span'>{counterpart.translate('attack')} </span> {movesPokemon.move.name}
           </p>
           <p>
-            <span className='span'>power:</span> {movesPokemon.move.power}
+            <span className='span'>{counterpart.translate('power')} </span> {movesPokemon.move.power}
           </p>
         </div>
       </div>
-      <button onClick={handleClickAttack}>Atacar</button>
+      <Translate component='button' content='toAttack' onClick={handleClickAttack} />
     </section>
   );
 };
