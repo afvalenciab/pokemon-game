@@ -11,7 +11,7 @@ Check the application in the link below:
 ![Pokémon battle](https://pokemongame.s3-us-west-1.amazonaws.com/PokemonImg2.png)
 
 ### Mobile Version (Responsive Design)
-![ResponsiveDesign](https://pokemongame.s3-us-west-1.amazonaws.com/PokemonImg3.png)
+![ResponsiveDesign](https://pokemongame.s3-us-west-1.amazonaws.com/PokemonImgMob.png)
 
 # Documentation
 
