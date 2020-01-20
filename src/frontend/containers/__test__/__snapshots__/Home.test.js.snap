@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home testing Match Snapshot 1`] = `
+Array [
+  <main
+    className="home--container"
+  >
+    <header
+      className="home--title"
+    >
+      <figure>
+        <img
+          alt="Pokemon Logo"
+          src="test-file-stubs"
+        />
+      </figure>
+    </header>
+    <section
+      className="player--one"
+    >
+      <section
+        className="home--player"
+      >
+        <h2>
+          Selecciona un Pokémon
+        </h2>
+        <div
+          className="player--search"
+        >
+          <form
+            onSubmit={[Function]}
+          >
+            <input
+              onChange={[Function]}
+              placeholder="Buscar Pokémon por nombre o Id"
+              type="text"
+            />
+            <button
+              type="submit"
+            >
+              ⟶
+            </button>
+          </form>
+        </div>
+      </section>
+      <div
+        className="overlay__one is-disable"
+      />
+    </section>
+    <section
+      className="player--two"
+    >
+      <section
+        className="home--player"
+      >
+        <h2>
+          Selecciona un Pokémon
+        </h2>
+        <div
+          className="player--search"
+        >
+          <form
+            onSubmit={[Function]}
+          >
+            <input
+              onChange={[Function]}
+              placeholder="Buscar Pokémon por nombre o Id"
+              type="text"
+            />
+            <button
+              type="submit"
+            >
+              ⟶
+            </button>
+          </form>
+        </div>
+      </section>
+      <div
+        className="overlay__two is-disable"
+      />
+    </section>
+    <footer
+      className="home--options is-active"
+    >
+      <div
+        className="pokeball"
+      >
+        <button
+          className="button--play"
+          onClick={[Function]}
+        >
+          Jugar
+        </button>
+        <button
+          className="button--restart"
+          onClick={[Function]}
+        >
+          Reiniciar
+        </button>
+      </div>
+      <figure>
+        <img
+          alt="pokemon snorlax"
+          src="test-file-stubs"
+        />
+      </figure>
+    </footer>
+  </main>,
+  <div
+    className="overlay__home is-active"
+  />,
+]
+`;

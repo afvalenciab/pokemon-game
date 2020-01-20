@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound testing, Match Snapshot 1`] = `
+<section
+  className="notfound"
+>
+  <h1>
+    Not Found
+  </h1>
+  <figure>
+    <img
+      alt="snorlax"
+      src="test-file-stubs"
+    />
+  </figure>
+</section>
+`;

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingPokemon testing Match Snapshot 1`] = `
+<section
+  className="loading"
+>
+  <div
+    className="loading__container"
+  >
+    <div
+      className="circle__up"
+    />
+    <div
+      className="circle__center"
+    />
+    <div
+      className="circle__down"
+    />
+  </div>
+</section>
+`;

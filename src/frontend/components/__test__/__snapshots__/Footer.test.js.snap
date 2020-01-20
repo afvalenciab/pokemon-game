@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer testing Match Snapshot 1`] = `
+<footer
+  className="home--options "
+>
+  <div
+    className="pokeball"
+  >
+    <button
+      className="button--play"
+    >
+      Jugar
+    </button>
+    <button
+      className="button--restart"
+    >
+      Reiniciar
+    </button>
+  </div>
+  <figure>
+    <img
+      alt="pokemon snorlax"
+      src="test-file-stubs"
+    />
+  </figure>
+</footer>
+`;
