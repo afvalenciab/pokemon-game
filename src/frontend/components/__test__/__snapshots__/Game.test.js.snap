@@ -36,7 +36,8 @@ exports[`Game Testing Match Snapshot 1`] = `
         <span
           className="span"
         >
-          Ataque: 
+          Ataque:
+           
         </span>
          
       </p>
@@ -44,7 +45,8 @@ exports[`Game Testing Match Snapshot 1`] = `
         <span
           className="span"
         >
-          power:
+          Poder:
+           
         </span>
          
       </p>

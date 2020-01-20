@@ -24,7 +24,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/' component={Home} />
+        <Route exact path='/:lang?' component={Home} />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

@@ -2,20 +2,30 @@ import React, { useRef, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { InView } from 'react-intersection-observer';
 import axios from 'axios';
+import counterpart from 'counterpart';
+import Translate from 'react-translate-component';
 import { requestMorePokemons, getPokemonsError } from '../actions';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import PokemonCard from '../components/PokemonCard';
 import logoPokemon from '../assets/static/Pokemon_logo.svg';
 import '../assets/styles/Player.scss';
+import en from '../lang/en';
+import es from '../lang/es';
+
+counterpart.registerTranslations('en', en);
+counterpart.registerTranslations('es', es);
 
 const Player = props => {
   const {
     pokemonList,
     requestMorePokemons,
     nextUrlPokemonsList,
-    getPokemonsError
+    getPokemonsError,
+    lang
   } = props;
+
+  counterpart.setLocale(lang ? lang : 'es');
 
   const loaderUrl = useRef(nextUrlPokemonsList);
   useEffect(() => {
@@ -85,7 +95,7 @@ const Player = props => {
 
   return (
     <section className='home--player'>
-      <h2>Selecciona un Pokémon</h2>
+      <Translate content='choosePokemon' component='h2'/>
       {pokemonList.length > 0 && (
         <Carousel>
           {!searchPokemon.isSearching &&
@@ -112,10 +122,11 @@ const Player = props => {
       )}
       <div className='player--search'>
         <form onSubmit={handleSubmit}>
-          <input
+          <Translate 
+            component='input'
             type='text'
-            placeholder='Buscar Pokémon por nombre o Id'
             onChange={handleInput}
+            attributes={{placeholder: 'placeholderSearch'}}
           />
           <button type='submit'>⟶</button>
         </form>
