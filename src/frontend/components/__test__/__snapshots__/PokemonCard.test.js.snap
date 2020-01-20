@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonCard testing Match Snapshot 1`] = `
+<div
+  className="player--carousel-item"
+  onClick={[Function]}
+>
+  <figure>
+    <img />
+  </figure>
+  <p />
+</div>
+`;

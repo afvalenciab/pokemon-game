@@ -62,6 +62,16 @@ app.get('/pokemon/:nameOrId', async (req, res, next) => {
   }
 });
 
+app.post('/fetch', async (req, res, next) => {
+  const { body } = req;
+  try {
+    const response = await axios.get(body.url);
+    res.status(200).json(response.data);
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.get('*', main);
 
 app.listen(PORT, (err) => {

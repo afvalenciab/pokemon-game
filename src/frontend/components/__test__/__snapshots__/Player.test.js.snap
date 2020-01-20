@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Player testing Match snaptshot 1`] = `
+<section
+  className="home--player"
+>
+  <h2>
+    Selecciona un Pokémon
+  </h2>
+  <div
+    className="player--search"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Buscar Pokémon por nombre o Id"
+        type="text"
+      />
+      <button
+        type="submit"
+      >
+        ⟶
+      </button>
+    </form>
+  </div>
+</section>
+`;

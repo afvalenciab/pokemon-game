@@ -1,4 +1,4 @@
-
+import axios from 'axios';
 
 export const gettingPokemons = (payload) => {
   return ({
@@ -23,10 +23,9 @@ export const getPokemonsError = (payload) => {
 
 export const requestMorePokemons = (url) => {
   return (dispatch) => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => dispatch(setPokemonsList(data)))
-      .catch((error) => dispatch(getPokemonsError(error)));
+    axios.post('/fetch', { url })
+      .then(response => dispatch(setPokemonsList(response.data)))
+      .catch(error => dispatch(getPokemonsError(error)));
   };
 };
 
