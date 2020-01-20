@@ -1,4 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
+import axios from 'axios';
 import PokemonCard from '../components/PokemonCard';
 import logoPokemon from '../assets/static/Pokemon_logo.svg';
 
@@ -12,8 +13,8 @@ const CarouselItem = (props) => {
   useLayoutEffect(() => {
     try {
       const fetchData = async () => {
-        const response = await fetch(url);
-        const data = await response.json();
+        const response = await axios.post('/fetch', { url });
+        const data = response.data;
         setPokemon({
           data
         });

@@ -7,9 +7,9 @@ import '../assets/styles/Game.scss';
 const Game = props => {
   const { name, picture, pictureDefault, lifeBar, moves, updateLifeBarPokemon } = props;
   const player = useContext(PlayerContext);
-  const lengthMoves = moves.length;
+  const lengthMoves = moves ? moves.length : 0;
   const [movesPokemon, setMovesPokemon] = useState({
-    move: moves[Math.floor(Math.random()*(lengthMoves - 0))]
+    move: moves ? moves[Math.floor(Math.random()*(lengthMoves - 0))] : 0
   });
 
   const [animationImg, setAnimationImg] = useState({

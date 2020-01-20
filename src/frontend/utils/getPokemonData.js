@@ -34,11 +34,9 @@ const getMaximumPower = async (moves) => {
 
   for (let i in moves) {
     try {
-      const responseMove = await fetch(moves[i].move.url);
-      const dataMove = await responseMove.json();
-
-      if (dataMove.priority === 0 && dataMove.power) {
-        movesArray.push({ name: dataMove.name, power: dataMove.power });
+      const response = await axios.post('/fetch', { url: moves[i].move.url })
+      if (response.data.priority === 0 && response.data.power) {
+        movesArray.push({ name: response.data.name, power: response.data.power });
       }
     } catch (error) {
       //Continuar consultado el siguiente movimiento

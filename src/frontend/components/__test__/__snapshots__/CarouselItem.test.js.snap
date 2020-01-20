@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarouselItem testing Match Snapshot 1`] = `
+<div
+  className="player--carousel-item"
+  onClick={[Function]}
+>
+  <figure>
+    <img
+      alt="Loading..."
+      src="test-file-stubs"
+    />
+  </figure>
+  <p>
+    Loading...
+  </p>
+</div>
+`;

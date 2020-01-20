@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Testing Match Snapshot 1`] = `
+<header
+  className="home--title"
+>
+  <figure>
+    <img
+      alt="Pokemon Logo"
+      src="test-file-stubs"
+    />
+  </figure>
+</header>
+`;

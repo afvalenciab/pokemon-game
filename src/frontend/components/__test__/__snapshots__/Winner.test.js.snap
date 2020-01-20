@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Winner testing Match Snapshot 1`] = `
+<div
+  className="overlay__winner"
+>
+  <section
+    className="winner__container"
+  >
+    <h1>
+      GANADOR
+    </h1>
+    <figure>
+      <img
+        alt=""
+      />
+    </figure>
+    <p />
+    <button>
+      Nuevo Desafio
+    </button>
+  </section>
+</div>
+`;
