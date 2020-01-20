@@ -151,7 +151,6 @@ const reducer = (state = initialState, action) => {
       return result;
     };
 
-
     default:
       return state;
   };
