@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game Testing Match Snapshot 1`] = `
+<section
+  className="home--game"
+>
+  <h2 />
+  <div
+    className="game--item"
+  >
+    <figure>
+      <img
+        alt="Pokemon"
+        className="img--pokemon"
+      />
+    </figure>
+    <div
+      className="info--game"
+    >
+      <div
+        className="game--life"
+      >
+        <div
+          className="life--bar"
+          style={
+            Object {
+              "background": "linear-gradient(90deg, green undefined%, #fff 0%)",
+            }
+          }
+        />
+        <p>
+          %
+        </p>
+      </div>
+      <p>
+        <span
+          className="span"
+        >
+          Ataque: 
+        </span>
+         
+      </p>
+      <p>
+        <span
+          className="span"
+        >
+          power:
+        </span>
+         
+      </p>
+    </div>
+  </div>
+  <button
+    onClick={[Function]}
+  >
+    Atacar
+  </button>
+</section>
+`;

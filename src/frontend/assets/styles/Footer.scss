@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border: 3px solid #000;
+    border: 2px solid #000;
     width: 250px;
     height: 250px;
     border-radius: 50%;
@@ -29,7 +29,7 @@
   }
 
   .button--play {
-    border-bottom: 4px solid #000;
+    border-bottom: 3px solid #000;
     background-color: #DD0001;
     color: #FFF;
     width: 100%;
@@ -45,7 +45,7 @@
   }
 
   .button--restart {
-    border-top: 4px solid #000;
+    border-top: 3px solid #000;
     width: 100%;
     height: 50%;
     transition: .2s;

@@ -31,21 +31,31 @@ const getPokemonData = async (nameOrId, player) => {
 
 const getMaximumPower = async (moves) => {
   const movesArray = [];
+  const numberOfMovements = moves.length;
+  let limitOfMovements;
 
-  for (let i in moves) {
+  if (numberOfMovements <= 6) {
+    limitOfMovements = numberOfMovements;
+  } else {
+    limitOfMovements = 6;
+  }
+
+  while (movesArray.length < limitOfMovements) {
+    let randomNumber = Math.floor(Math.random() * (numberOfMovements));
+
     try {
-      const responseMove = await fetch(moves[i].move.url);
-      const dataMove = await responseMove.json();
-
-      if (dataMove.priority === 0 && dataMove.power) {
-        movesArray.push({ name: dataMove.name, power: dataMove.power });
+      const response = await axios.post('/fetch', { url: moves[randomNumber].move.url });
+      if (response.data.priority === 0 && response.data.power) {
+        movesArray.push({ name: response.data.name, power: response.data.power });
       }
     } catch (error) {
+      console.log(error);
       //Continuar consultado el siguiente movimiento
     }
   }
 
-  return movesArray.sort((a, b) => b.power - a.power).slice(0, 6);
+  return movesArray;
 };
+
 
 export default getPokemonData;
