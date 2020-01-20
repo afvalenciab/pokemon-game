@@ -3,9 +3,9 @@
   background: #FFF;
   border-top-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  display: grid;
-  grid-template-rows: 45px 1fr 45px;
-  grid-gap: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   height: 100%;
   padding: 10px;
   justify-items: center;
